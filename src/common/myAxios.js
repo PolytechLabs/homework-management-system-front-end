@@ -52,42 +52,42 @@ axiosInstance.interceptors.response.use(
 
         switch (code) {
             case -1: {
-                innerMessage("info", "需要登陆");
+                innerMessage("info", "Авторизуйтесь");
                 setTimeout(() => (window.location.href = "/login"), 250);
                 return Promise.reject(new Error("NOT_LOGGED_IN"));
             }
 
             case 1: {
-                innerMessage("error", "错误: " + message);
+                innerMessage("error", "Ошибка: " + message);
                 return Promise.reject(new Error("FAIL"));
             }
 
             case 2: {
-                innerMessage("info", "您不是此角色");
+                innerMessage("info", "Неверная роль");
                 setTimeout(() => (window.location.href = "/login"), 250);
                 return Promise.reject(new Error("ROLE_ERROR"));
             }
 
             case 3: {
-                let errorMessage = "请求参数错误";
+                let errorMessage = "Ошибка данных";
                 if (data.length > 0) {
-                    errorMessage = "参数错误: " + data[0].message;
+                    errorMessage = "Ошибка параметра: " + data[0].message;
                 }
                 innerMessage("error", errorMessage);
                 return Promise.reject(new Error("INVALID_PARAMETER"));
             }
 
             case 4: {
-                innerMessage("error", "内部服务器错误");
+                innerMessage("error", "Внутренняя ошибка сервера");
                 return Promise.reject(new Error("INTERNAL_SERVER_ERROR"));
             }
         }
 
         if (typeof error.response === "undefined") {
-            innerMessage("error", "与后端服务器通信失败");
+            innerMessage("error", "Не удалось связаться с внутренним сервером");
             vueInstance.instance.$router.push({name: "login"});
         } else if (error.response.status >= 400) {
-            innerMessage("error", "HTTP错误: " + error.response.status);
+            innerMessage("error", "HTTP ошибка: " + error.response.status);
         }
 
         return Promise.reject(error);
