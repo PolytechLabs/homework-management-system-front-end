@@ -12,25 +12,7 @@
             <el-container class="main-container">
                 <div class="introduction-container">
                     <p>
-                        欢迎来到作业管理系统！
-                    </p>
-                    <p>
-                        前端项目地址
-                        <el-link href="https://github.com/Yi1275432232/homework-management-system-front-end"
-                                 type="primary">
-                            homework-management-system-front-end
-                        </el-link>
-                    </p>
-                    <p>
-                        后端项目地址
-                        <el-link href="https://github.com/Yi1275432232/homework-management-system-back-end"
-                                 type="success">
-                            homework-management-system-back-end
-                        </el-link>
-                    </p>
-                    <p>
-                        我的博客地址
-                        <el-link href="https://blog.csdn.net/Yiang0" type="info">Yiang的博客</el-link>
+                        Добро пожаловать！
                     </p>
                 </div>
             </el-container>
