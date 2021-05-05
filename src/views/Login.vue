@@ -1,16 +1,16 @@
 <template>
     <div class="login-wrap">
         <div class="login-form">
-            <div class="form-title">作业管理系统</div>
+            <div class="form-title">Система управления домашними заданиями</div>
             <el-form ref="form" :model="formData" :rules="rules" class="form-content" label-width="0px">
                 <el-form-item prop="userId">
-                    <el-input onkeyup="value=value.replace(/[^\d]/g,'')" placeholder="学号/工号" v-model="formData.userId">
+                    <el-input onkeyup="value=value.replace(/[^\d]/g,'')" placeholder="Id пользователя" v-model="formData.userId">
                         <span slot="prepend"><i class="el-icon-user"></i></span>
                     </el-input>
                 </el-form-item>
 
                 <el-form-item prop="password">
-                    <el-input placeholder="密码" type="password" v-model="formData.password"
+                    <el-input placeholder="Пароль" type="password" v-model="formData.password"
                               @keyup.enter.native="login()">
                         <span slot="prepend"><i class="el-icon-lock"></i></span>
                     </el-input>
@@ -18,13 +18,13 @@
 
                 <el-form-item prop="userType">
                     <el-radio-group v-model="formData.userType">
-                        <el-radio-button label="1">学生</el-radio-button>
-                        <el-radio-button label="2">教师</el-radio-button>
+                        <el-radio-button label="1">Ученик</el-radio-button>
+                        <el-radio-button label="2">Преподаватель</el-radio-button>
                     </el-radio-group>
                 </el-form-item>
 
                 <div class="login-button" v-loading="this.$store.state.loading">
-                    <el-button @click="login()" type="primary">登录</el-button>
+                    <el-button @click="login()" type="primary">Войти</el-button>
                 </div>
 
                 <div>
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="register-button">
-                    <el-button @click="register()" type="success">注册</el-button>
+                    <el-button @click="register()" type="success">Зарегистрироваться</el-button>
                 </div>
             </el-form>
         </div>
@@ -53,9 +53,9 @@
                     userType: "1"
                 },
                 rules: {
-                    userId: [{required: true, message: "请输入账号", trigger: "blur"}],
-                    password: [{required: true, message: "请输入密码", trigger: "blur"}],
-                    userType: [{required: true, message: "请选择用户类型", trigger: "blur"}]
+                    userId: [{required: true, message: "Введите userID", trigger: "blur"}],
+                    password: [{required: true, message: "Введите пароль", trigger: "blur"}],
+                    userType: [{required: true, message: "Выберите тип", trigger: "blur"}]
                 }
             };
         },
@@ -64,7 +64,7 @@
                 this.$refs.form.validate(valid => {
                     if (valid) {
                         login(this.formData.userId, md5(this.formData.password + md5(this.formData.userId)), this.formData.userType).then(res => {
-                            this.$message.success("登录成功：" + res.username);
+                            this.$message.success("Вход выполнен успешно：" + res.username);
                             this.$store.commit("login", res);
                             this.$router.push({name: "container"});
                         });
