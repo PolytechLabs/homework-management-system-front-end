@@ -3,7 +3,7 @@
         <div class="crumbs">
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item>
-                    <i class="el-icon-fa fa-book"></i> 作业列表
+                    <i class="el-icon-fa fa-book"></i> Список заданий
                 </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
@@ -13,13 +13,13 @@
                 <el-row :gutter="20">
                     <el-col :offset="15" :span="3">
                         <el-input @keyup.enter.native="query" onkeyup="value=value.replace(/[^\d]/g,'')"
-                                  placeholder="作业编号" v-model="queryForm.homeworkId"/>
+                                  placeholder="№" v-model="queryForm.homeworkId"/>
                     </el-col>
                     <el-col :span="3">
-                        <el-input @keyup.enter.native="query" placeholder="作业标题" v-model="queryForm.homeworkTitle"/>
+                        <el-input @keyup.enter.native="query" placeholder="Название" v-model="queryForm.homeworkTitle"/>
                     </el-col>
                     <el-col :span="3">
-                        <el-button @click="query" icon="el-icon-search" type="primary">搜索</el-button>
+                        <el-button @click="query" icon="el-icon-search" type="primary">Поиск</el-button>
                     </el-col>
                 </el-row>
             </div>
@@ -46,41 +46,41 @@
 
             <div class="table">
                 <el-table :data="tableData" stripe>
-                    <el-table-column label="作业编号" prop="homeworkId"/>
-                    <el-table-column label="教师" prop="teacherName"/>
-                    <el-table-column label="作业标题" prop="homeworkTitle"/>
-                    <el-table-column label="作业内容" prop="homeworkContent" width="200px"/>
-                    <el-table-column align="center" label="操作" width="200px">
+                    <el-table-column label="№" prop="homeworkId"/>
+                    <el-table-column label="ФИО учителя" prop="teacherName"/>
+                    <el-table-column label="Название" prop="homeworkTitle"/>
+                    <el-table-column label="Содержание" prop="homeworkContent" width="200px"/>
+                    <el-table-column align="center" label="Выполнение" width="200px">
                         <template slot-scope="scope">
                             <el-button @click="editStudentHomework(scope.row.homeworkId)" size="mini" type="success">
-                                提交作业
+                                Отправить
                             </el-button>
                         </template>
                     </el-table-column>
                 </el-table>
             </div>
 
-            <el-dialog :visible.sync="editing" title="编辑" width="50%">
+            <el-dialog :visible.sync="editing" title="Редактировать" width="50%">
                 <el-form :model="entityForm" label-width="82px" ref="form">
-                    <el-form-item label="作业编号">
+                    <el-form-item label="№">
                         <el-input disabled type="number" v-model="entityForm.homeworkId"></el-input>
                     </el-form-item>
-                    <el-form-item label="作业标题">
+                    <el-form-item label="Название">
                         <el-input disabled type="text" v-model="entityForm.homeworkTitle"></el-input>
                     </el-form-item>
-                    <el-form-item label="作业内容">
+                    <el-form-item label="Содержание">
                         <el-input disabled type="textarea" v-model="entityForm.homeworkContent"></el-input>
                     </el-form-item>
-                    <el-form-item label="提交的标题">
+                    <el-form-item label="Представленное задание">
                         <el-input type="text" v-model="entityForm.title"></el-input>
                     </el-form-item>
-                    <el-form-item label="提交的内容">
+                    <el-form-item label="Представленное содержание">
                         <el-input type="textarea" v-model="entityForm.content"></el-input>
                     </el-form-item>
                 </el-form>
                 <span class="dialog-footer" slot="footer">
-                    <el-button @click="save" type="primary">确 定</el-button>
-                    <el-button @click="editing = false">取 消</el-button>
+                    <el-button @click="save" type="primary">Подтвердить</el-button>
+                    <el-button @click="editing = false">Отменить</el-button>
                 </span>
             </el-dialog>
         </div>
@@ -127,7 +127,7 @@
             },
             save() {
                 homeworkApi.submitHomework(this.entityForm).then(() => {
-                    this.$message.success("成功");
+                    this.$message.success("Успешно!");
                     this.getPage(this.pageIndex);
                     this.editing = false;
                 });

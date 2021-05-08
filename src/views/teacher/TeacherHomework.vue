@@ -3,7 +3,7 @@
         <div class="crumbs">
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item>
-                    <i class="el-icon-fa fa-book"></i> 作业列表
+                    <i class="el-icon-fa fa-book"></i> Список заданий
                 </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
@@ -12,7 +12,7 @@
             <div class="query-form">
                 <el-row :gutter="20">
                     <el-col :span="2">
-                        <el-button @click="create" icon="el-icon-plus">发布作业</el-button>
+                        <el-button @click="create" icon="el-icon-plus">Опубикловать задание</el-button>
                     </el-col>
                     <el-col :offset="13" :span="3">
                         <el-input @keyup.enter.native="query" onkeyup="value=value.replace(/[^\d]/g,'')"
@@ -142,13 +142,13 @@
                 }
             },
             finishSave() {
-                this.$message.success("成功");
+                this.$message.success("Успешно!");
                 this.getPage(this.pageIndex);
                 this.editing = false;
             },
             deleteHomework(homeworkId) {
                 homeworkApi.deleteHomework(homeworkId).then(() => {
-                    this.$message.success("删除成功");
+                    this.$message.success("Успешно удалено!");
                     this.getPage(this.pageIndex);
                 });
             }

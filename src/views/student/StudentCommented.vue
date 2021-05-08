@@ -3,7 +3,7 @@
         <div class="crumbs">
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item>
-                    <i class="el-icon-fa fa-thumbs-up"></i> 老师已点评的作业
+                    <i class="el-icon-fa fa-thumbs-up"></i> Комментарий учителя
                 </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
@@ -13,13 +13,13 @@
                 <el-row :gutter="20">
                     <el-col :offset="15" :span="3">
                         <el-input @keyup.enter.native="query" onkeyup="value=value.replace(/[^\d]/g,'')"
-                                  placeholder="作业编号" v-model="queryForm.homeworkId"/>
+                                  placeholder="№" v-model="queryForm.homeworkId"/>
                     </el-col>
                     <el-col :span="3">
-                        <el-input @keyup.enter.native="query" placeholder="作业标题" v-model="queryForm.homeworkTitle"/>
+                        <el-input @keyup.enter.native="query" placeholder="Название" v-model="queryForm.homeworkTitle"/>
                     </el-col>
                     <el-col :span="3">
-                        <el-button @click="query" icon="el-icon-search" type="primary">搜索</el-button>
+                        <el-button @click="query" icon="el-icon-search" type="primary">Поиск</el-button>
                     </el-col>
                 </el-row>
             </div>
@@ -46,13 +46,13 @@
 
             <div class="table">
                 <el-table :data="tableData" stripe>
-                    <el-table-column label="作业编号" prop="homeworkId"/>
-                    <el-table-column label="作业标题" prop="homeworkTitle"/>
-                    <el-table-column label="作业内容" prop="homeworkContent"/>
-                    <el-table-column label="提交的标题" prop="title"/>
-                    <el-table-column label="提交的内容" prop="content"/>
-                    <el-table-column label="老师" prop="teacherName"/>
-                    <el-table-column label="评语" prop="teacherComment"/>
+                    <el-table-column label="№" prop="homeworkId"/>
+                    <el-table-column label="Название" prop="homeworkTitle"/>
+                    <el-table-column label="Содержание" prop="homeworkContent"/>
+                    <el-table-column label="Представленное задание" prop="title"/>
+                    <el-table-column label="Представленное содержание" prop="content"/>
+                    <el-table-column label="ФИО учителя" prop="teacherName"/>
+                    <el-table-column label="Комментарий учителя" prop="teacherComment"/>
                 </el-table>
             </div>
         </div>

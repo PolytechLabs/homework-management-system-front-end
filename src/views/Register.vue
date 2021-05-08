@@ -76,7 +76,7 @@
                         } else {
                             register(this.formData.userId, this.formData.username, md5(this.formData.password + md5(this.formData.userId)), this.formData.userType).then(() => {
                                 this.$message.success("Пользователь успешно зарегистрирован");
-                                this.$router.push({name: "Логин"});
+                                this.$router.go({name: "login"});
                             });
                         }
                     }

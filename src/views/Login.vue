@@ -1,7 +1,7 @@
 <template>
     <div class="login-wrap">
         <div class="login-form">
-            <div class="form-title">Система управления домашними заданиями</div>
+            <div class="form-title">Портал школы</div>
             <el-form ref="form" :model="formData" :rules="rules" class="form-content" label-width="0px">
                 <el-form-item prop="userId">
                     <el-input onkeyup="value=value.replace(/[^\d]/g,'')" placeholder="Id пользователя" v-model="formData.userId">
